@@ -15,6 +15,11 @@ public:
     explicit Config_Tool(QWidget *parent = nullptr);
     ~Config_Tool();
 
+private slots:
+    void on_actionScan_triggered();
+
+    void on_actionQuit_triggered();
+
 private:
     Ui::Config_Tool *ui;
 };

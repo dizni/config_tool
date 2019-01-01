@@ -12,3 +12,14 @@ Config_Tool::~Config_Tool()
 {
     delete ui;
 }
+
+
+void Config_Tool::on_actionScan_triggered()
+{
+    ui->textBrowser->append("Clicked");
+}
+
+void Config_Tool::on_actionQuit_triggered()
+{
+    QApplication::quit();
+}

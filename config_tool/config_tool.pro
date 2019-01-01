@@ -26,15 +26,23 @@ CONFIG += c++11
 
 SOURCES += \
         main.cpp \
-        config_tool.cpp
+        config_tool.cpp \
+    comm/comm.cpp
 
 HEADERS += \
-        config_tool.h
+        config_tool.h \
+    comm/comm.h
 
 FORMS += \
         config_tool.ui
+
+LIBS += -lcoap-1
+INCLUDEPATH += /usr/include/coap
+DEPENDPATH +=  /usr/include/coap
+QMAKE_CXXFLAGS += -O0 -g -D_GNU_SOURCE -DWITH_POSIX
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
