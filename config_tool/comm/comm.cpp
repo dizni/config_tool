@@ -52,7 +52,7 @@ int Comm::send(const char *server_ip,
     request->hdr->id   = coap_new_message_id(ctx);
     request->hdr->code = method;
 
-    res = coap_split_uri((const unsigned char *)server_uri, strlen(server_uri), &uri);
+    res = coap_split_uri(reinterpret_cast < const unsigned char *> (server_uri), strlen(server_uri), &uri);
     if (res != 0) {
         return res;
     }
