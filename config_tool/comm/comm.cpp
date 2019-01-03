@@ -5,7 +5,9 @@
 
 #define BUF_SIZE 100
 
-Comm::Comm(QObject *parent): QObject(parent), m_is_running(false)
+bool g_flag_running = false;
+
+Comm::Comm() : m_is_running(false)
 {
 }
 
@@ -15,6 +17,18 @@ Comm::~Comm()
 
 }
 
+void Comm::test(void)
+{
+    g_flag_running = true;
+
+    while(g_flag_running) {
+
+    }
+    printf("test\n");
+
+}
+
+#if 0
 int Comm::send(const char *server_ip,
                const char *server_uri,
                uint8_t method,
@@ -89,8 +103,6 @@ int Comm::send(const char *server_ip,
     if ( res < 0 ) {
         return EXIT_FAILURE;
     } else if ( res > 0 && FD_ISSET( ctx->sockfd, &readfds )) {
-        m_is_running = true;
-        QTimer::singleShot(timeout, this, SLOT(timer_handler()));
         while(m_is_running) {
             coap_read( ctx );
         }
@@ -98,8 +110,12 @@ int Comm::send(const char *server_ip,
     return 0;
 }
 
+#endif
 
-void Comm:: timer_handler(void)
+
+void Comm:: stop_run(void)
 {
     m_is_running = false;
+    printf("stop_run\n");
+
 }

@@ -27,18 +27,20 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         config_tool.cpp \
-    comm/comm.cpp
+    comm/comm.cpp \
+    worker.cpp
 
 HEADERS += \
         config_tool.h \
-    comm/comm.h
+    comm/comm.h \
+    worker.h
 
 FORMS += \
         config_tool.ui
 
 LIBS += -lcoap-1
-INCLUDEPATH += /usr/include/coap
-DEPENDPATH +=  /usr/include/coap
+INCLUDEPATH += /usr/local/include/coap comm
+DEPENDPATH +=  /usr/local/include/coap
 QMAKE_CXXFLAGS += -O0 -g -D_GNU_SOURCE -DWITH_POSIX
 
 # Default rules for deployment.

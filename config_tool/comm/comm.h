@@ -1,31 +1,33 @@
 #ifndef COMM_H
 #define COMM_H
 
-#include "QObject"
 
-extern "C" {
-    #include "coap.h"
-}
+//extern "C" {
+//    #include "coap.h"
+//}
 
-class Comm: public QObject
+class Comm
 {
-    Q_OBJECT
 public:
-    explicit Comm(QObject *parent = nullptr);
+    Comm();
     ~Comm();
 
-    int send(const char *server_ip,
-               const char *server_uri,
-               uint8_t method,
-               uint16_t timeout,
-               coap_response_handler_t 	response_handler);
+    void stop_run(void);
+
+//    int send(const char *server_ip,
+//               const char *server_uri,
+//               uint8_t method,
+//               uint16_t timeout,
+//               coap_response_handler_t 	response_handler);
+
+    void test(void);
+
+
+    bool    m_is_running;
 
 private:
-    bool   m_is_running;
 
 
-private slots:
-    void timer_handler(void);
 
 };
 
